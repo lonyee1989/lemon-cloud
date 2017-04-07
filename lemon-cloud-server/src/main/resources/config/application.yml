@@ -5,8 +5,10 @@ spring:
     name: eureka-server
 
 eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10 #default 30 seconds
   client:
     register-with-eureka: false
     fetch-registry: false
-  serviceUrl:
-    defaultZone: http://localhost:${server.port}/eureka/
+    serviceUrl:
+      defaultZone: http://localhost:${server.port}/eureka/

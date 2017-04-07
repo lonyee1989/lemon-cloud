@@ -10,9 +10,15 @@
   <artifactId>lemon-cloud</artifactId>
   <version>1.0.0-SNAPSHOT</version>
     <modules>
+        <module>lemon-framework</module>
         <module>lemon-cloud-server</module>
-      <module>lemon-cloud-service</module>
+        <module>lemon-cloud-service</module>
         <module>lemon-cloud-consumer</module>
+        <module>lemon-cloud-gateway</module>
+        <module>lemon-cloud-config</module>
+        <module>lemon-cloud-service-account</module>
+        <module>lemon-cloud-service-security</module>
+        <module>lemon-cloud-service-finance</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -35,6 +41,11 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
     </dependency>
+    <!--监控集成-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
     <!-- 测试支持 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -47,4 +58,12 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

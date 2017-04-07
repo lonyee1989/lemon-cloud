@@ -1,0 +1,14 @@
+server:
+  port: 8078
+
+spring:
+  application:
+    name: eureka-config
+
+eureka:
+  instance:
+    appname: eureka-config
+    leaseRenewalIntervalInSeconds: 10 #default 30 seconds
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8088/eureka/

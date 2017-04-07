@@ -1,0 +1,12 @@
+server:
+  port: 8093
+spring:
+  application:
+    name: finance-service
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10 #default 30 seconds
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8088/eureka/
