@@ -1,14 +1,13 @@
 server:
-  port: 8078
+  port: 8068
 
 spring:
   application:
     name: eureka-config
-
-eureka:
-  instance:
-    appname: eureka-config
-    leaseRenewalIntervalInSeconds: 10 #default 30 seconds
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8088/eureka/
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lonyee1989/lemon-cloud-config.git
+        encrypt:
+          enabled: true

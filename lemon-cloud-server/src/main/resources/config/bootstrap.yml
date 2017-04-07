@@ -1,0 +1,11 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config:
+      enabled: true
+      uri: http://127.0.0.1:8068
+      name: application-server
+      profile: dev

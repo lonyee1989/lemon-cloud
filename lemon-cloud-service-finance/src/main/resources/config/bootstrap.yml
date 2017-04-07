@@ -1,0 +1,15 @@
+server:
+  port: 8093
+spring:
+  application:
+    name: finance-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://127.0.0.1:8068
+      name: application
+      profile: dev
+
+endpoints:
+  restart:
+    enabled: true
