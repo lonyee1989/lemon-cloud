@@ -16,7 +16,6 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @SpringBootApplication
 @EnableFeignClients
 @EnableHystrix
-@EnableHystrixDashboard
 public class ServiceApplication {
     /**
      * 启动项目DiscoveryClientService

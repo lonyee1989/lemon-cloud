@@ -5,6 +5,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 /**
  * Created by lonyee on 2017/4/6.
@@ -22,7 +23,7 @@ public class GatewayApplication {
         springApplication.run(args);
     }
 
-    @Bean
+    //@Bean
     public AccessFilter accessFilter() {
         return new AccessFilter();
     }

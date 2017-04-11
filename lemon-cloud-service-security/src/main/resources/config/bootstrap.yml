@@ -1,5 +1,6 @@
 server:
   port: 8091
+  use-forward-headers: false
 spring:
   application:
     name: security-service
@@ -7,8 +8,7 @@ spring:
     config:
       enabled: true
       uri: http://127.0.0.1:8068
-      name: application
-      profile: dev
+      name: application-security
 
 endpoints:
   restart:

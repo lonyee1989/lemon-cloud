@@ -8,4 +8,4 @@ spring:
       enabled: true
       uri: http://127.0.0.1:8068
       name: application-config
-      profile: dev
+      # profile: dev
