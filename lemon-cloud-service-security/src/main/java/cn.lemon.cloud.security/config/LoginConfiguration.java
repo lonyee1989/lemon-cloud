@@ -14,20 +14,21 @@ import javax.annotation.Resource;
 /**
  * Created by lonyee on 2017/4/10.
  */
-@Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
+@Order(-20)
 @Configuration
 @EnableWebSecurity
 public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 
-    private AuthenticationManager authenticationManager;
+    @Resource(name = "authenticationManager")
+    AuthenticationManager authenticationManager;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login").permitAll().and().authorizeRequests()
-                .anyRequest().authenticated();
+        http.formLogin().loginPage("/login").permitAll()
+                .and().requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+                .and().authorizeRequests().anyRequest().authenticated();
     }
 
-    @Resource
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.parentAuthenticationManager(authenticationManager);
