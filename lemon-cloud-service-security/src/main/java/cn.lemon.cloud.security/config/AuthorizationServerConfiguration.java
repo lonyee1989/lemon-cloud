@@ -1,5 +1,6 @@
 package cn.lemon.cloud.security.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -28,9 +29,9 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
-    @Resource(name = "authenticationManager")
+    @Resource
     private AuthenticationManager authenticationManager;
-    @Resource(name = "dataSource")
+    @Resource
     private DataSource dataSource;
 
     @Bean // 声明TokenStore实现
@@ -59,10 +60,17 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource);
+        clients.withClientDetails(clientDetails());
     }
 
-    /* //测试token
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        oauthServer.checkTokenAccess("isAuthenticated()");
+        oauthServer.tokenKeyAccess("permitAll()");
+        oauthServer.allowFormAuthenticationForClients();
+    }
+
+   /* //测试token
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
