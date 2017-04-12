@@ -1,6 +1,6 @@
 package cn.lemon.cloud.consumer.controller;
 
-import cn.lemon.cloud.consumer.rpc.feign.IComputeClient;
+import cn.lemon.cloud.consumer.rpc.feign.IComputeService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 @RestController
 public class ConsumerController {
     @Resource
-    IComputeClient computeClient;
+    IComputeService computeClient;
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public Integer add(Integer a, Integer b) {
