@@ -7,5 +7,5 @@ spring:
     config:
       enabled: true
       uri: http://127.0.0.1:8068
-      name: application-demo
+      name: application-demos
      # profile: dev
