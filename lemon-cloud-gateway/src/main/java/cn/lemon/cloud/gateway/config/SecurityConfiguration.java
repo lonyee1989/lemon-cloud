@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/security/**", "/login").permitAll().anyRequest().authenticated()
+        http.authorizeRequests().antMatchers("/security/**", "/file/**", "/login").permitAll().anyRequest().authenticated()
                 .and()
                 .csrf().requireCsrfProtectionMatcher(csrfRequestMatcher()).csrfTokenRepository(csrfTokenRepository())
                 .and()

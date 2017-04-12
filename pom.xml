@@ -19,6 +19,7 @@
         <module>lemon-cloud-service-account</module>
         <module>lemon-cloud-service-security</module>
         <module>lemon-cloud-service-finance</module>
+        <module>lemon-cloud-service-fileservice</module>
     </modules>
     <packaging>pom</packaging>
 
