@@ -8,11 +8,8 @@
 
 package org.csource.fastdfs;
 
-import java.io.*;
-import java.util.*;
-import java.net.*;
+import java.io.IOException;
 import java.lang.reflect.Array;
-import org.csource.common.*;
 
 /**
 * C struct body decoder

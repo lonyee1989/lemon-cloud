@@ -8,17 +8,13 @@
 
 package org.csource.fastdfs;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.FileInputStream;
-import java.io.File;
-import java.util.Arrays;
-import java.net.Socket;
+import org.csource.common.Base64;
 import org.csource.common.MyException;
 import org.csource.common.NameValuePair;
-import org.csource.common.Base64;
+
+import java.io.*;
+import java.net.Socket;
+import java.util.Arrays;
 
 /**
 * Storage client for 2 fields file id: group name and filename

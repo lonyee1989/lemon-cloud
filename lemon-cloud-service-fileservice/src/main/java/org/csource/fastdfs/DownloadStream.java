@@ -2,7 +2,6 @@ package org.csource.fastdfs;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import org.csource.fastdfs.DownloadCallback;
 
 /**
 * Download file by stream (download callback class)

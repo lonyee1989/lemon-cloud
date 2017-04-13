@@ -1,9 +1,8 @@
 package org.csource.fastdfs;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.InputStream;
-import org.csource.fastdfs.UploadCallback;
+import java.io.OutputStream;
 
 /**
 * Upload file by stream

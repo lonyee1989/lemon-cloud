@@ -10,8 +10,8 @@ package org.csource.fastdfs;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Arrays;
 import java.net.Socket;
+import java.util.Arrays;
 
 /**
 * Tracker client

@@ -1,8 +1,5 @@
 package cn.lemon.fileservice.util;
 
-import org.csource.common.MyException;
-import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 
 /**

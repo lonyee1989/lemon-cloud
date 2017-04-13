@@ -2,8 +2,6 @@ package org.csource.fastdfs;
 
 import com.google.common.base.Strings;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by lonyee on 2017/4/13.

@@ -8,11 +8,6 @@
 
 package org.csource.fastdfs;
 
-import java.io.*;
-import java.util.*;
-import java.net.*;
-import org.csource.common.*;
-
 /**
 * Download file callback interface
 * @author Happy Fish / YuQing

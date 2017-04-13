@@ -8,10 +8,13 @@
 
 package org.csource.fastdfs;
 
-import java.net.*;
-import java.io.*;
+import org.csource.common.IniFileReader;
+import org.csource.common.MyException;
 
-import org.csource.common.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 /**
 * Global variables
