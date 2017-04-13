@@ -1,4 +1,4 @@
-package cn.lemon.cloud.security;
+package cn.lemon.security;
 
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,14 +13,15 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
  */
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableFeignClients
 @EnableHystrix
 @EnableHystrixDashboard
-public class FileServiceApplication {
+public class SecurityApplication {
     /**
      * 启动项目DiscoveryClientService
      */
     public static void main(String[] args) {
-        SpringApplicationBuilder springApplication = new SpringApplicationBuilder(FileServiceApplication.class);
+        SpringApplicationBuilder springApplication = new SpringApplicationBuilder(SecurityApplication.class);
         springApplication.web(true);
         springApplication.run(args);
     }

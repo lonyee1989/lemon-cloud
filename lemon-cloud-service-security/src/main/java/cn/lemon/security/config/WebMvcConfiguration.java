@@ -1,4 +1,4 @@
-package cn.lemon.cloud.security.config;
+package cn.lemon.security.config;
 
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

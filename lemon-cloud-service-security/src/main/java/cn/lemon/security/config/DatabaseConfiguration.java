@@ -1,4 +1,4 @@
-package cn.lemon.cloud.security.config;
+package cn.lemon.security.config;
 
 import javax.sql.DataSource;
 
@@ -9,10 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /** 
  * 数据源配置

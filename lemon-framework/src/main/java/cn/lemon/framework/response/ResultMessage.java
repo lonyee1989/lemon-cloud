@@ -40,6 +40,8 @@ public class ResultMessage {
 	public static final ResultMessage F4050 = new ResultMessage(4050, "不支持的请求方法");
 	/** 客户端不接受所请求的 MIME类型 */
 	public static final ResultMessage F4060 = new ResultMessage(4060, "客户端不接受所请求的MIME类型");
+	/** 图片上传失败，请检查网络设置 */
+	public static final ResultMessage F4070 = new ResultMessage(4070, "图片上传失败，请检查网络设置");
 	/** 服务器内部异常 */
 	public static final ResultMessage F5000 = new ResultMessage(5000, "服务器内部异常");
 	
