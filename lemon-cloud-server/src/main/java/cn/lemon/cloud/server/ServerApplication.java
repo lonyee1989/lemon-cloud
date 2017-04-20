@@ -3,12 +3,14 @@ package cn.lemon.cloud.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * Created by lonyee on 2017/4/6.
  */
 @EnableEurekaServer
+@EnableConfigServer
 @SpringBootApplication
 public class ServerApplication {
 

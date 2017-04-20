@@ -2,9 +2,20 @@ server:
   port: 8088
 spring:
   application:
-    name: eureka-server
+    name: config-server
   cloud:
     config:
-      enabled: true
-      uri: http://127.0.0.1:8068
-      name: application-server
+      server:
+        git:
+          uri: https://github.com/lonyee1989/lemon-cloud-config.git
+         # username: user
+         # password: secret
+          searchPaths: dev  #利用查询地址区分不同配置环境
+        encrypt:
+          enabled: true
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://localhost:8088/eureka/

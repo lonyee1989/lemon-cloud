@@ -100,7 +100,7 @@ public class BeanUtil {
 				}
 			}
 			catch (Exception ex) {
-				logger.warn("BeanUtil set entity [{}] value error. {}", f.getName(), ex.getMessage());
+				logger.warn("BeanUtil set bean [{}] value error. {}", f.getName(), ex.getMessage());
 			}
 		}
 		return entityvo;
