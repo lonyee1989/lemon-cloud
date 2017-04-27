@@ -2,7 +2,7 @@ server:
   port: 8093
 spring:
   application:
-    name: finance-service
+    name: finance
   cloud:
     config:
       enabled: true

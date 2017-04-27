@@ -19,6 +19,7 @@
 
 /logs
 /log
+/lemon-cloud
 
 #Builtapplicationfiles
 *.apk

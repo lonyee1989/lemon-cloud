@@ -2,7 +2,7 @@ server:
   port: 8078
 spring:
   application:
-    name: eureka-consumer
+    name: consumer
   cloud:
     config:
       enabled: true

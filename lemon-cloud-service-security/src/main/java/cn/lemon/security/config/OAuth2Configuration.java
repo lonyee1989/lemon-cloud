@@ -30,48 +30,42 @@ import java.util.concurrent.TimeUnit;
  * Created by lonyee on 2017/4/10.
  */
 @Configuration
-@EnableResourceServer
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
     @Resource
     private AuthenticationManager authenticationManager;
+    @Resource
+    private DataSource dataSource;
 
     @Bean
-    public TokenStore createTokenStore(DataSource dataSource){
+    public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
-    }
-
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), "foobar".toCharArray())
-                .getKeyPair("test");
-        converter.setKeyPair(keyPair);
-        return converter;
     }
 
     /**
      * 注册UserDetailsService 的bean
      */
-    @Bean
+    /*@Bean
     protected ClientDetailsService clientDetailsService(){
         return new ClientService();
+    }*/
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(this.authenticationManager)
+                .tokenStore(tokenStore());
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService());
-                /*.inMemory()
-                .withClient("acme")
-                .secret("acmesecret")
-                .authorizedGrantTypes("authorization_code", "refresh_token","password")
-                .scopes("openid");*/
+        //clients.withClientDetails(clientDetailsService());
+        clients.inMemory()
+                .withClient("lemon")
+                .secret("lemonsecret")
+                .authorizedGrantTypes("authorization_code", "refresh_token",
+                        "password").scopes("openid");
     }
 
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager).accessTokenConverter(jwtAccessTokenConverter());
-    }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {

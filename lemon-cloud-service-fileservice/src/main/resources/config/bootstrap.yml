@@ -1,9 +1,6 @@
-server:
-  port: 8066
-  use-forward-headers: false
 spring:
   application:
-    name: file-service
+    name: fileservice
   cloud:
     config:
       enabled: true

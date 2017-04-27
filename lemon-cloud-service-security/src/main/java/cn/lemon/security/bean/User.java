@@ -1,4 +1,4 @@
-package cn.lemon.security.entity;
+package cn.lemon.security.bean;
 
 import cn.lemon.framework.BasicEntityBean;
 

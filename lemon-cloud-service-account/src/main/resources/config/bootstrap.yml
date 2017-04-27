@@ -1,8 +1,6 @@
-server:
-  port: 8092
 spring:
   application:
-    name: account-service
+    name: account
   cloud:
     config:
       enabled: true

@@ -49,19 +49,3 @@ create table oauth_approvals (
 	expiresAt TIMESTAMP,
 	lastModifiedAt TIMESTAMP
 );
-
-
--- customized oauth_client_details table
-create table ClientDetails (
-  appId VARCHAR(128) PRIMARY KEY,
-  resourceIds VARCHAR(128),
-  appSecret VARCHAR(128),
-  scope VARCHAR(128),
-  grantTypes VARCHAR(128),
-  redirectUrl VARCHAR(128),
-  authorities VARCHAR(128),
-  access_token_validity INTEGER,
-  refresh_token_validity INTEGER,
-  additionalInformation VARCHAR(4096),
-  autoApproveScopes VARCHAR(128)
-);

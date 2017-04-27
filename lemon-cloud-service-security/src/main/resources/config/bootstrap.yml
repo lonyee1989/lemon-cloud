@@ -1,15 +1,8 @@
-server:
-  port: 8091
-  use-forward-headers: false
 spring:
   application:
-    name: security-service
+    name: security
   cloud:
     config:
       enabled: true
-      uri: http://127.0.0.1:8068
+      uri: http://127.0.0.1:8088
       name: application-security
-
-endpoints:
-  restart:
-    enabled: true

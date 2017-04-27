@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @ConditionalOnClass({ EnableTransactionManagement.class })
 @AutoConfigureAfter({ DatabaseConfiguration.class })  
-@MapperScan(basePackages={"cn.lemon.account.**.dao"})
+@MapperScan(basePackages={"cn.lemon.security.**.dao"})
 public class MybatisConfiguration {
     private static Logger logger = LoggerFactory.getLogger(MybatisConfiguration.class);  
     
@@ -30,8 +30,6 @@ public class MybatisConfiguration {
     private String  typeAliasesPackage;
     @Value("${mybatis.mapperLocations}")
     private String  mapperLocations;
-    @Value("${spring.dataSource.dialect}")
-    private String  dialect;
     
     @Resource(name="dataSource")
     private DataSource dataSource;

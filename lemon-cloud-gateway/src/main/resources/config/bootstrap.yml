@@ -1,11 +1,11 @@
-server:
-  port: 8069
 spring:
+  aop:
+    proxyTargetClass: true
   application:
-    name: eureka-gateway
+    name: gateway
   cloud:
     config:
       enabled: true
-      uri: http://127.0.0.1:8068
+      uri: http://127.0.0.1:8088
       name: application-gateway
       # profile: dev

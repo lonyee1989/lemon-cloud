@@ -1,19 +1,26 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 </head>
 <body>
 <div class="container">
-    <form role="form" action="login" method="post">
+    <div th:if="${param.error}">
+        用户名或密码错误
+    </div>
+    <div th:if="${param.logout}">
+        您已注销成功
+    </div>
+    <form role="form" th:action="@{/login}" method="post">
         <div class="form-group">
-            <label for="username">Username:</label>
+            <label for="username">用户名:</label>
             <input type="text" class="form-control" id="username" name="username"/>
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password">密  码:</label>
             <input type="password" class="form-control" id="password" name="password"/>
         </div>
-        <input type="hidden" id="csrf_token" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!--<input type="hidden" id="csrf_token" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+        <button type="submit" class="btn btn-primary">登录</button>
     </form>
 </div>
 </body>

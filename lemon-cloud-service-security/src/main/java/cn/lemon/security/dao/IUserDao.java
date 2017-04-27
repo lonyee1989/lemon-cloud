@@ -1,7 +1,7 @@
 package cn.lemon.security.dao;
 
 import cn.lemon.framework.IBasicDao;
-import cn.lemon.security.entity.User;
+import cn.lemon.security.bean.User;
 
 /**************************
  * user
