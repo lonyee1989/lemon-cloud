@@ -15,11 +15,11 @@
         <module>lemon-cloud-service</module>
         <module>lemon-cloud-consumer</module>
         <module>lemon-cloud-gateway</module>
-        <module>lemon-cloud-config</module>
         <module>lemon-cloud-service-account</module>
         <module>lemon-cloud-service-security</module>
         <module>lemon-cloud-service-finance</module>
         <module>lemon-cloud-service-fileservice</module>
+      <module>lemon-security</module>
     </modules>
     <packaging>pom</packaging>
 

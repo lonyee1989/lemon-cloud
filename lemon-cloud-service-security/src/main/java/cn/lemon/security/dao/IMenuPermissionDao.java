@@ -2,7 +2,8 @@ package cn.lemon.security.dao;
 
 import cn.lemon.security.bean.MenuPermission;
 
-import cn.lemon.framework.IBasicDao;
+import cn.lemon.framework.core.IBasicDao;
+
 /**************************
  * menu_permission
  * 菜单-权限表

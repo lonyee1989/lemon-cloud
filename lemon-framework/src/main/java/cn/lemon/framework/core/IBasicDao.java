@@ -2,7 +2,7 @@
  * Copyright (c) 2016. 版权所有,归龙佚.
  */
 
-package cn.lemon.framework;
+package cn.lemon.framework.core;
 
 import java.util.List;
 

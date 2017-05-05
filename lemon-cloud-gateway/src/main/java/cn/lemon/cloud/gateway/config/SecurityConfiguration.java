@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
  * Created by lonyee on 2017/4/10.
  */
 @Configuration
-@EnableOAuth2Sso
+//@EnableOAuth2Sso
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String CSRF_COOKIE_NAME = "XSRF-TOKEN";
     private static final String CSRF_HEADER_NAME = "X-XSRF-TOKEN";

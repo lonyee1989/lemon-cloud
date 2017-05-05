@@ -1,6 +1,6 @@
 package cn.lemon.security.bean;
 
-import cn.lemon.framework.BasicEntityBean;
+import cn.lemon.framework.core.BasicEntityBean;
 
 
 

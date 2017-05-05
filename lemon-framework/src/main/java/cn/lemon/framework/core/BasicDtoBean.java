@@ -1,4 +1,4 @@
-package cn.lemon.framework;
+package cn.lemon.framework.core;
 
 import java.io.Serializable;
 

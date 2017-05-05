@@ -1,6 +1,6 @@
 package cn.lemon.security.bean;
 
-import cn.lemon.framework.BasicEntityBean;
+import cn.lemon.framework.core.BasicEntityBean;
 
 
 /**************************
@@ -13,7 +13,7 @@ import cn.lemon.framework.BasicEntityBean;
 public class MenuPermission extends BasicEntityBean {
 	//fields
 	/** 菜单Id **/
-	private java.math.BigInteger menuId;
+	private Long menuId;
 	/** 权限码 **/
 	private String code;
 	/** 权限 **/
@@ -24,12 +24,12 @@ public class MenuPermission extends BasicEntityBean {
 	private String remark;
 
 
-	public void setMenuId(java.math.BigInteger menuId) {
+	public void setMenuId(Long menuId) {
 		if (menuId != null) {
 			this.menuId=menuId;
 		}
 	}
-	public java.math.BigInteger getMenuId() {
+	public Long getMenuId() {
 		return menuId;
 	}
 	public void setCode(String code) {
