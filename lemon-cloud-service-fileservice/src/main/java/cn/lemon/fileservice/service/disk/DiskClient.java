@@ -1,6 +1,6 @@
-package cn.lemon.fileservice.util.disk;
+package cn.lemon.fileservice.service.disk;
 
-import cn.lemon.fileservice.util.IFileClient;
+import cn.lemon.fileservice.service.IFileClient;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

@@ -1,9 +1,9 @@
 package cn.lemon.security.service;
 
-import cn.lemon.security.bean.User;
-import cn.lemon.security.bean.MenuPermission;
-import cn.lemon.security.dao.IMenuPermissionDao;
-import cn.lemon.security.dao.IUserDao;
+import cn.lemon.security.entity.User;
+import cn.lemon.security.entity.MenuPermission;
+import cn.lemon.security.repository.IMenuPermissionRepository;
+import cn.lemon.security.repository.IUserRepository;
 import cn.lemon.framework.core.BasicService;
 import cn.lemon.framework.query.Query;
 import cn.lemon.security.response.ResultSecMessage;
@@ -24,9 +24,9 @@ import java.util.List;
 @Service
 public class UserService extends BasicService implements UserDetailsService {
     @Resource
-    private IUserDao userDao;
+    private IUserRepository userDao;
     @Resource
-    private IMenuPermissionDao menuPermissionDao;
+    private IMenuPermissionRepository menuPermissionDao;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {

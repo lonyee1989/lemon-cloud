@@ -1,8 +1,8 @@
 package cn.lemon.security.service;
 
 import cn.lemon.framework.query.Query;
-import cn.lemon.security.bean.MenuPermission;
-import cn.lemon.security.dao.IMenuPermissionDao;
+import cn.lemon.security.entity.MenuPermission;
+import cn.lemon.security.repository.IMenuPermissionRepository;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 
@@ -16,7 +16,7 @@ import java.io.Serializable;
 //@Service
 public class PermissionService implements PermissionEvaluator {
     @Resource
-    private IMenuPermissionDao menuPermissionDao;
+    private IMenuPermissionRepository menuPermissionDao;
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {

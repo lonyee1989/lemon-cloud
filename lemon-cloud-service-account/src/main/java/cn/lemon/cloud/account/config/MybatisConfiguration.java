@@ -1,4 +1,4 @@
-package cn.lemon.security.config;
+package cn.lemon.cloud.account.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @ConditionalOnClass({ EnableTransactionManagement.class })
 @AutoConfigureAfter({ DatabaseConfiguration.class })  
-@MapperScan(basePackages={"cn.lemon.security.**.repository"})
+@MapperScan(basePackages={"cn.lemon.account.**.repository"})
 public class MybatisConfiguration {
     private static Logger logger = LoggerFactory.getLogger(MybatisConfiguration.class);  
     

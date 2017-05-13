@@ -1,8 +1,11 @@
 package cn.lemon.security.config;
 
+import cn.lemon.security.service.ClientService;
+import cn.lemon.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -24,6 +27,7 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.concurrent.TimeUnit;
 
@@ -36,11 +40,18 @@ import java.util.concurrent.TimeUnit;
 @EnableAuthorizationServer
 public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
+    @Resource
     private AuthenticationManager authenticationManager;
 
-    @Autowired
+    @Resource
     private DataSource dataSource;
+
+    @Resource
+    private ClientService clientService;
+
+    @Resource
+    private UserService userService;
+
 
     @Bean
     public TokenStore tokenStore() {
@@ -49,8 +60,6 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager);
-        endpoints.tokenStore(tokenStore());
 
         // 配置TokenServices参数
         DefaultTokenServices tokenServices = new DefaultTokenServices();
@@ -60,18 +69,17 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
         tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
         tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30)); // 30天
         endpoints.tokenServices(tokenServices);
+        endpoints.authenticationManager(authenticationManager);
+        endpoints.tokenStore(tokenStore());
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource);
+        clients.withClientDetails(clientService);
     }
 
     @Configuration
     protected class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-        @Autowired
-        DataSource dataSource;
 
         @Bean
         public PersistentTokenRepository persistentTokenRepository() {
@@ -98,16 +106,14 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
         @Bean
         public UserDetailsService userDetailsService() {
-            JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
-            jdbcUserDetailsManager.setDataSource(dataSource);
-            return jdbcUserDetailsManager;
+            return userService;
         }
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth
-                    .userDetailsService(userDetailsService());
-                    /*.passwordEncoder(bCryptPasswordEncoder());*/
+                    .userDetailsService(userDetailsService())
+                    .passwordEncoder(bCryptPasswordEncoder());
         }
     }
 

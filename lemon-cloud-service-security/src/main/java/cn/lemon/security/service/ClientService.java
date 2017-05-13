@@ -1,12 +1,12 @@
 package cn.lemon.security.service;
 
-import org.springframework.security.oauth2.config.annotation.builders.ClientDetailsServiceBuilder;
-import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -15,11 +15,19 @@ import java.util.Set;
  * 客户授权服务接口
  * Created by lonyee on 2017/4/14.
  */
-public class ClientService implements ClientDetailsService {
+@Service
+public class ClientService extends JdbcClientDetailsService {
+
+    public ClientService(DataSource dataSource) {
+        super(dataSource);
+    }
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
-        BaseClientDetails clientDetails = new BaseClientDetails();
+        System.out.println("loadClientbyClientId is  oking.......");
+        return super.loadClientByClientId(clientId);
+
+        /*BaseClientDetails clientDetails = new BaseClientDetails();
         clientDetails.setClientId(clientId);
         clientDetails.setClientSecret("whc_client_secret");
 
@@ -42,6 +50,6 @@ public class ClientService implements ClientDetailsService {
         autoApproveScopes.add("whc");
         clientDetails.setAutoApproveScopes(autoApproveScopes);
 
-        return clientDetails;
+        return clientDetails;*/
     }
 }

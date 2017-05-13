@@ -1,6 +1,6 @@
-package cn.lemon.security.dao;
+package cn.lemon.cloud.account.repository;
 
-import cn.lemon.security.bean.User;
+import cn.lemon.cloud.account.entity.User;
 import cn.lemon.framework.core.IBasicDao;
 
 /**************************
@@ -10,7 +10,7 @@ import cn.lemon.framework.core.IBasicDao;
  * @date 2017-04-05 15:20:52
  * 
  **************************/
-public interface IUserDao extends IBasicDao<User>{
+public interface IUserRepository extends IBasicDao<User>{
     /**
      * 根据手机号查询用户信息
      */

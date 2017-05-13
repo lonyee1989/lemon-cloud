@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 import cn.lemon.framework.utils.BeanUtil;
 import cn.lemon.framework.utils.JsonUtil;
-
+import lombok.Getter;
+import lombok.Setter;
 
 public abstract class BasicDtoBean implements Serializable {
 	
@@ -14,7 +15,11 @@ public abstract class BasicDtoBean implements Serializable {
 	public BasicDtoBean(BasicEntityBean entityBean) {
 		BeanUtil.toBeanValues(entityBean, this);
 	}
-	
+
+	public <T extends BasicEntityBean> T toEntityBean(Class<T> entityClazz) {
+		return BeanUtil.toBeanValues(this, entityClazz);
+	}
+
 	@Override
     public String toString() {
 		return JsonUtil.writeValue(this);

@@ -1,6 +1,6 @@
-package cn.lemon.fileservice.util.fdfs;
+package cn.lemon.fileservice.service.fdfs;
 
-import cn.lemon.fileservice.util.IFileClient;
+import cn.lemon.fileservice.service.IFileClient;
 import cn.lemon.framework.utils.ImageUtil;
 import org.csource.common.MyException;
 import org.csource.common.NameValuePair;
