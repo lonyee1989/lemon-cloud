@@ -1,7 +1,6 @@
-package cn.lemon.security.repository;
+package cn.lemon.security.dao;
 
 import cn.lemon.security.entity.MenuPermission;
-
 import cn.lemon.framework.core.IBasicDao;
 
 /**************************
@@ -11,6 +10,6 @@ import cn.lemon.framework.core.IBasicDao;
  * @date 2017-04-17 16:36:05
  * 
  **************************/
-public interface IMenuPermissionRepository extends IBasicDao<MenuPermission>{
+public interface IMenuPermissionDao extends IBasicDao<MenuPermission>{
 	
 }

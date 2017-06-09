@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @ConditionalOnClass({ EnableTransactionManagement.class })
 @AutoConfigureAfter({ DatabaseConfiguration.class })  
-@MapperScan(basePackages={"cn.lemon.security.**.repository"})
+@MapperScan(basePackages={"cn.lemon.security.**.dao"})
 public class MybatisConfiguration {
     private static Logger logger = LoggerFactory.getLogger(MybatisConfiguration.class);  
     

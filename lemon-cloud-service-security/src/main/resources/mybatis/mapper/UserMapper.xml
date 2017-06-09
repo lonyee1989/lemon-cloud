@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.lemon.security.repository.IUserRepository">
-	<resultMap id="userResultMap" type="cn.lemon.security.entity.User">
+<mapper namespace="cn.lemon.security.dao.IUserDao">
+	<resultMap id="userResultMap" type="cn.lemon.security.entity.UserDetail">
 		<id property="id" column="id" />
 		<result property="nation" column="nation"/>
 		<result property="mobile" column="mobile"/>
@@ -30,6 +30,12 @@
 		    <if test="usable!=null">
 		        and usable=#{usable}
 		    </if>
+			<if test="nation!=null">
+				and nation=#{nation}
+			</if>
+			<if test="mobile!=null">
+				and mobile=#{mobile}
+			</if>
 		</where>
 		limit 1 
 	</select>
@@ -41,7 +47,7 @@
 
 	<!--查询实体数据-->
 	<select id="findByMobile" resultMap="userResultMap">
-		select * from user where mobile=#{mobile} limit 1
+		select * from user where nation=#{nation} and mobile=#{mobile} and usable=1 limit 1
 	</select>
 
 	<!--查询列表数据-->
