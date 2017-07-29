@@ -11,7 +11,8 @@ import cn.lemon.framework.BasicEntityBean;
  * @date 2017-04-05 15:20:52
  * 
  **************************/
-public class User extends BasicEntityBean {
+public class User extends BasicEntityBean<Long> {
+	private static final long serialVersionUID = 1L;
 	//fields
 	/** 国别代码 86 中国 **/
 	private String nation;

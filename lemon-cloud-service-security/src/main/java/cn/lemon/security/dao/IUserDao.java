@@ -10,7 +10,7 @@ import cn.lemon.security.bean.User;
  * @date 2017-04-05 15:20:52
  * 
  **************************/
-public interface IUserDao extends IBasicDao<User>{
+public interface IUserDao extends IBasicDao<User, Long>{
     /**
      * 根据手机号查询用户信息
      */
