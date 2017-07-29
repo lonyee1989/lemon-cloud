@@ -1,12 +1,19 @@
 package cn.lemon.framework.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * 全局唯一ID生成器
- * 
  *  拼接规则
  *  000000000000000000000000000000000000000000  00000            00000       000000000000
  *  time                                        datacenterId   workerId      sequence
+ * @author lonyee
  */
 public class SerialNumberUtil {
 	private long workerId;
@@ -47,6 +54,9 @@ public class SerialNumberUtil {
         this.datacenterId = datacenterId;
     }
     
+    /**
+     * 生成ID
+     */
     public synchronized long nextId() {
         long timestamp = timeGen(); //获取当前毫秒数
         //如果服务器时间有问题(时钟后退) 报错。
@@ -81,33 +91,33 @@ public class SerialNumberUtil {
         return System.currentTimeMillis();
     }
     
-}
 
-/* test
-public static void main(String[] arg) {
-	long avg = 0;
-    for (int k = 0; k < 10; k++) {
-        List<Callable<Long>> partitions = new ArrayList<Callable<Long>>();
-        final SerialNumberUtil idGen = SerialNumberUtil.instance();
-        for (int i = 0; i < 1400000; i++) {
-            partitions.add(new Callable<Long>() {
-                @Override
-                public Long call() throws Exception {
-                    return idGen.nextId();
-                }
-            });
-        }
-        ExecutorService executorPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        try {
-            long s = System.currentTimeMillis();
-            executorPool.invokeAll(partitions, 10000, TimeUnit.SECONDS);
-            long s_avg = System.currentTimeMillis() - s;
-            avg += s_avg;
-            System.out.println("完成时间需要: " + s_avg / 1.0e3 + "秒");
-            executorPool.shutdown();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    System.out.println("平均完成时间需要: " + avg / 10 / 1.0e3 + "秒");
-}*/
+	/*public static void main(String[] arg) {
+		long avg = 0;
+	    for (int k = 0; k < 10; k++) {
+	        List<Callable<Long>> partitions = new ArrayList<Callable<Long>>();
+	        final SerialNumberUtil idGen = SerialNumberUtil.instance();
+	        for (int i = 0; i < 1400000; i++) {
+	            partitions.add(new Callable<Long>() {
+	                @Override
+	                public Long call() throws Exception {
+	                    return idGen.nextId();
+	                }
+	            });
+	        }
+	        ExecutorService executorPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+	        try {
+	            long s = System.currentTimeMillis();
+	            executorPool.invokeAll(partitions, 10000, TimeUnit.SECONDS);
+	            long s_avg = System.currentTimeMillis() - s;
+	            avg += s_avg;
+	            System.out.println("完成时间需要: " + s_avg / 1.0e3 + "秒");
+	            executorPool.shutdown();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    System.out.println("平均完成时间需要: " + avg / 10 / 1.0e3 + "秒");
+	}*/
+    
+}

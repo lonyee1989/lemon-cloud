@@ -6,6 +6,7 @@ import java.util.Date;
 import cn.lemon.framework.utils.BeanUtil;
 import cn.lemon.framework.utils.JsonUtil;
 import cn.lemon.framework.utils.SerialNumberUtil;
+import cn.lemon.framework.utils.SerialUUIDUtil;
 
 import com.google.common.base.Objects;
 
@@ -18,7 +19,7 @@ import com.google.common.base.Objects;
  * @author lonyee
  * @date 2016-07-14
  */
-public abstract class BasicEntityBean implements Serializable {
+public abstract class BasicEntityBean<I> implements Serializable {
     
 	private static final long serialVersionUID = -1394178167652755500L;
 	public BasicEntityBean() {}
@@ -29,7 +30,7 @@ public abstract class BasicEntityBean implements Serializable {
 	/**
      * 主键id
      */
-    private Long id = SerialNumberUtil.instance().nextId();
+    private I id;
     /**
      * 创建人员
      */
@@ -39,23 +40,15 @@ public abstract class BasicEntityBean implements Serializable {
      */
     private Date createdDate;
     /**
-     * 最后修改人员
-     */
-    private Long updater;
-    /**
-     * 最后修改时间
-     */
-    private Date updatedDate;
-    /**
      * 是否可用（软删除使用）
      */
     private Boolean usable = true;
     
-    public Long getId() {
-        return (id==null || id<=0)? null: id;
+    public I getId() {
+        return id;
     }
 
-    public void setId(Long id) {
+    public void setId(I id) {
         this.id = id;
     }
 
@@ -75,28 +68,33 @@ public abstract class BasicEntityBean implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	public Long getUpdater() {
-		return updater;
-	}
-
-	public void setUpdater(Long updater) {
-		this.updater = updater;
-	}
-
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-
 	public Boolean getUsable() {
 		return usable;
 	}
 
 	public void setUsable(Boolean usable) {
 		this.usable = usable;
+	}
+	
+	/**
+	 * 生成唯一ID 19位
+	 */
+	public Long generateId() {
+		return SerialNumberUtil.instance().nextId();
+	}
+	
+	/**
+	 * 生成唯一UUID 32位
+	 */
+	public String generateUUId() {
+		return SerialUUIDUtil.instance().nextId();
+	}
+	
+	/**
+	 * 生成短UUID 12位
+	 */
+	public String generateShortUUId() {
+		return SerialUUIDUtil.instance().nextShortId();
 	}
 
 	@Override
@@ -108,7 +106,8 @@ public abstract class BasicEntityBean implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BasicEntityBean that = (BasicEntityBean) o;
+        @SuppressWarnings("rawtypes")
+		BasicEntityBean that = (BasicEntityBean) o;
         return Objects.equal(id, that.id);
     }
 

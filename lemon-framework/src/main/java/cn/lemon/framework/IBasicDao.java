@@ -4,6 +4,7 @@
 
 package cn.lemon.framework;
 
+import java.io.Serializable;
 import java.util.List;
 
 import cn.lemon.framework.query.Query;
@@ -17,8 +18,8 @@ import cn.lemon.framework.query.QueryPage;
  * @author lonyee
  * @date 2016-07-14
  */
-public interface IBasicDao<T extends BasicEntityBean> {
-
+public interface IBasicDao<T extends BasicEntityBean<I>, I extends Serializable> {
+	
     /**
      * 保存记录
      *
@@ -43,7 +44,7 @@ public interface IBasicDao<T extends BasicEntityBean> {
      * @return 受影响行数
      */
     @Deprecated
-    int delete(Long id);
+    int delete(I id);
     
     /**
      * 根据主键id删除记录 (软删除)
@@ -51,7 +52,7 @@ public interface IBasicDao<T extends BasicEntityBean> {
      * @param id 主键ID
      * @return 受影响行数
      */
-    int deleteBySoft(Long id);
+    int deleteBySoft(I id);
 
     /**
      * 根据查询条件Query查询单个记录
@@ -66,7 +67,7 @@ public interface IBasicDao<T extends BasicEntityBean> {
      * @param id 主键ID
      * @return T 实体对象
      */
-    T findById(Long id);
+    T findById(I id);
     
     /**
      * 根据查询条件Query查询全部记录

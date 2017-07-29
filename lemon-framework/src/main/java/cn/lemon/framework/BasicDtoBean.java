@@ -11,7 +11,7 @@ public abstract class BasicDtoBean implements Serializable {
 	private static final long	serialVersionUID	= -6466964376068440943L;
 	
 	public BasicDtoBean() {}
-	public BasicDtoBean(BasicEntityBean entityBean) {
+	public <T> BasicDtoBean(BasicEntityBean<T> entityBean) {
 		BeanUtil.toBeanValues(entityBean, this);
 	}
 	
