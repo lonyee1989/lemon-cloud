@@ -1,12 +1,12 @@
 package cn.lemon.cloud.account.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import cn.lemon.cloud.account.dto.UserDto;
+import cn.lemon.cloud.account.entity.User;
+import cn.lemon.cloud.account.repository.IUserRepository;
+import cn.lemon.framework.core.BasicController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -15,15 +15,14 @@ import javax.annotation.Resource;
  * Created by lonyee on 2017/4/6.
  */
 @RestController
-public class UserController {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+public class UserController extends BasicController {
     @Resource
-    private DiscoveryClient client;
+    private IUserRepository userRepository;
 
-    @RequestMapping(value = "/add" ,method = RequestMethod.GET)
-    public String add(@RequestParam String userName) {
-        ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/adduser, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + userName);
-        return userName;
+    @RequestMapping(value = "/user/${moblie}" ,method = RequestMethod.GET)
+    public UserDto getUserByMoblie(@PathVariable String moblie) {
+        User user = userRepository.findByMobile(moblie);
+        UserDto userDto = user.toDtoBean(UserDto.class);
+        return userDto;
     }
 }

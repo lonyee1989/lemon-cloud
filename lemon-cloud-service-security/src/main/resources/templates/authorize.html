@@ -7,9 +7,8 @@
     <h2>Please Confirm</h2>
 
     <p>
-        Do you authorize "${authorizationRequest.clientId}" at "${authorizationRequest.redirectUri}" to access your
-        protected resources
-        with scope ${authorizationRequest.scope?join(", ")}.
+        Do you authorize to access your
+        protected resources.
     </p>
     <form id="confirmationForm" name="confirmationForm"
           action="../oauth/authorize" method="post">

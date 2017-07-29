@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.lemon.security.dao.IUserDao">
-	<resultMap id="userResultMap" type="cn.lemon.security.bean.User">
+	<resultMap id="userResultMap" type="cn.lemon.security.entity.UserDetail">
 		<id property="id" column="id" />
 		<result property="nation" column="nation"/>
 		<result property="mobile" column="mobile"/>
@@ -30,6 +30,12 @@
 		    <if test="usable!=null">
 		        and usable=#{usable}
 		    </if>
+			<if test="nation!=null">
+				and nation=#{nation}
+			</if>
+			<if test="mobile!=null">
+				and mobile=#{mobile}
+			</if>
 		</where>
 		limit 1 
 	</select>
@@ -41,7 +47,7 @@
 
 	<!--查询实体数据-->
 	<select id="findByMobile" resultMap="userResultMap">
-		select * from user where mobile=#{mobile} limit 1
+		select * from user where nation=#{nation} and mobile=#{mobile} and usable=1 limit 1
 	</select>
 
 	<!--查询列表数据-->
@@ -68,7 +74,7 @@
 	</select>
 
 	<!--保存数据-->
-	<insert id="save" parameterType="cn.lemon.security.bean.User" useGeneratedKeys="true" keyProperty="id">
+	<insert id="save" parameterType="cn.lemon.security.entity.User" useGeneratedKeys="true" keyProperty="id">
 		insert into user(
 			nation,
 			mobile,
@@ -109,7 +115,7 @@
 	</insert>
 
 	<!--更新数据-->
-	<update  id="update" parameterType="cn.lemon.security.bean.User">
+	<update  id="update" parameterType="cn.lemon.security.entity.User">
 		update user
 		<set> 
 			<if test="nation!=null">

@@ -30,7 +30,7 @@ public class ReflectUtil {
             "java.lang.Boolean",
             "java.lang.Character",
             "java.lang.String",
-            "java.util.Date",
+            "java.service.Date",
             "int","double","long","short","byte","boolean","char","float");
 
     /**

@@ -1,7 +1,8 @@
 package cn.lemon.security.dao;
 
-import cn.lemon.framework.IBasicDao;
-import cn.lemon.security.bean.User;
+import cn.lemon.security.entity.User;
+import cn.lemon.framework.core.IBasicDao;
+import org.apache.ibatis.annotations.Param;
 
 /**************************
  * user
@@ -14,5 +15,5 @@ public interface IUserDao extends IBasicDao<User, Long>{
     /**
      * 根据手机号查询用户信息
      */
-    User findByMobile(String mobile);
+    User findByMobile(@Param("nation") String nation, @Param("mobile") String mobile);
 }

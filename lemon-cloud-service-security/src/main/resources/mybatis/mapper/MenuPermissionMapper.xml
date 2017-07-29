@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.lemon.security.dao.IMenuPermissionDao">
-	<resultMap id="menuPermissionResultMap" type="cn.lemon.security.bean.MenuPermission">
+	<resultMap id="menuPermissionResultMap" type="cn.lemon.security.entity.MenuPermission">
 		<id property="id" column="id" />
 		<result property="menuId" column="menu_id"/>
 		<result property="code" column="code"/>
@@ -52,7 +52,7 @@
 	</select>
 
 	<!--保存数据-->
-	<insert id="save" parameterType="cn.lemon.security.bean.MenuPermission" useGeneratedKeys="true" keyProperty="id">
+	<insert id="save" parameterType="cn.lemon.security.entity.MenuPermission" useGeneratedKeys="true" keyProperty="id">
 		insert into menu_permission(
 			menu_id,
 			code,
@@ -71,7 +71,7 @@
 	</insert>
 
 	<!--更新数据-->
-	<update  id="update" parameterType="cn.lemon.security.bean.MenuPermission">
+	<update  id="update" parameterType="cn.lemon.security.entity.MenuPermission">
 		update menu_permission
 		<set> 
 			<if test="menuId!=null">

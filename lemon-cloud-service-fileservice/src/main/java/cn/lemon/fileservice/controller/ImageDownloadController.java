@@ -1,7 +1,7 @@
 package cn.lemon.fileservice.controller;
 
-import cn.lemon.fileservice.util.IFileClient;
-import cn.lemon.framework.BasicController;
+import cn.lemon.fileservice.service.IFileClient;
+import cn.lemon.framework.core.BasicController;
 import cn.lemon.framework.encrypt.Base64Util;
 import com.google.common.collect.Maps;
 import org.springframework.web.bind.annotation.PathVariable;

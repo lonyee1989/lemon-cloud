@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lemon.cloud.account.repository.IUserRepository">
+	<resultMap id="userResultMap" type="cn.lemon.cloud.account.entity.User">
+		<id property="id" column="id" />
+		<result property="nation" column="nation"/>
+		<result property="mobile" column="mobile"/>
+		<result property="password" column="password"/>
+		<result property="nickName" column="nick_name"/>
+		<result property="headImageUrl" column="head_image_url"/>
+		<result property="email" column="email"/>
+		<result property="sex" column="sex"/>
+		<result property="realName" column="real_name"/>
+		<result property="cardType" column="card_type"/>
+		<result property="cardNo" column="card_no"/>
+		<result property="areaId" column="area_id"/>
+		<result property="area" column="area"/>
+		<result property="address" column="address"/>
+		<result property="remark" column="remark"/>
+		<result property="tags" column="tags"/>
+		<result property="auditted" column="auditted"/>
+		<result property="usable" column="usable"/>
+		<result property="createdDate" column="created_date"/>
+	</resultMap>
+
+	<!--查询实体数据-->
+	<select id="find" resultMap="userResultMap">
+		select * from user 
+		<where>
+		    <if test="usable!=null">
+		        and usable=#{usable}
+		    </if>
+		</where>
+		limit 1 
+	</select>
+
+	<!--查询实体数据-->
+	<select id="findById" resultMap="userResultMap">
+		select * from user where id=#{id} limit 1 
+	</select>
+
+	<!--查询实体数据-->
+	<select id="findByMobile" resultMap="userResultMap">
+		select * from user where mobile=#{mobile} limit 1
+	</select>
+
+	<!--查询列表数据-->
+	<select id="findAll" resultMap="userResultMap">
+		select * from user 
+		<where>
+		    <if test="usable!=null">
+		        and usable=#{usable}
+		    </if>
+		</where>
+	</select>
+
+	<!--查询分页列表数据-->
+	<select id="findPage" resultMap="userResultMap">
+		select * from user 
+		<where>
+		    <if test="usable!=null">
+		        and usable=#{usable}
+		    </if>
+		</where>
+		<if test="sort!=null and sort!=''">
+		    order by ${sort} ${order}
+		</if>
+	</select>
+
+	<!--保存数据-->
+	<insert id="save" parameterType="cn.lemon.cloud.account.entity.User" useGeneratedKeys="true" keyProperty="id">
+		insert into user(
+			nation,
+			mobile,
+			password,
+			nick_name,
+			head_image_url,
+			email,
+			sex,
+			real_name,
+			card_type,
+			card_no,
+			area_id,
+			area,
+			address,
+			remark,
+			tags,
+			auditted,
+			usable,
+			created_date) values(
+			#{nation},
+			#{mobile},
+			#{password},
+			#{nickName},
+			#{headImageUrl},
+			#{email},
+			#{sex},
+			#{realName},
+			#{cardType},
+			#{cardNo},
+			#{areaId},
+			#{area},
+			#{address},
+			#{remark},
+			#{tags},
+			#{auditted},
+			#{usable},
+			#{createdDate})
+	</insert>
+
+	<!--更新数据-->
+	<update  id="update" parameterType="cn.lemon.cloud.account.entity.User">
+		update user
+		<set> 
+			<if test="nation!=null">
+				nation=#{nation},
+			</if>
+			<if test="mobile!=null">
+				mobile=#{mobile},
+			</if>
+			<if test="password!=null">
+				password=#{password},
+			</if>
+			<if test="nickName!=null">
+				nick_name=#{nickName},
+			</if>
+			<if test="headImageUrl!=null">
+				head_image_url=#{headImageUrl},
+			</if>
+			<if test="email!=null">
+				email=#{email},
+			</if>
+			<if test="sex!=null">
+				sex=#{sex},
+			</if>
+			<if test="realName!=null">
+				real_name=#{realName},
+			</if>
+			<if test="cardType!=null">
+				card_type=#{cardType},
+			</if>
+			<if test="cardNo!=null">
+				card_no=#{cardNo},
+			</if>
+			<if test="areaId!=null">
+				area_id=#{areaId},
+			</if>
+			<if test="area!=null">
+				area=#{area},
+			</if>
+			<if test="address!=null">
+				address=#{address},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+			<if test="tags!=null">
+				tags=#{tags},
+			</if>
+			<if test="auditted!=null">
+				auditted=#{auditted},
+			</if>
+			<if test="usable!=null">
+				usable=#{usable},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<!--删除数据-->
+	<delete  id="delete">
+		delete from user where id=#{id}
+	</delete>
+
+	<!--逻辑删除数据-->
+	<delete  id="deleteBySoft">
+		update user set usable=0 where id=#{id}
+	</delete>
+
+</mapper>
