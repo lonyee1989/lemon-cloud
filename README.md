@@ -1,5 +1,5 @@
 # lemon-cloud
 
-关闭当前项目，请查看最新项目lemon-consul-cloud.
+关闭当前项目，请查看最新项目lemon-echo.
 
-https://github.com/lemon-china/lemon-consul-cloud
+https://github.com/weiecho/lemon-echo
